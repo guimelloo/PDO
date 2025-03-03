@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product toevoegen</title>
+</head>
+<body>
+    <h2>Voeg een product toe</h2>
+    <form action="insert.php" method="post">
+        <label for="product_naam">Productnaam:</label>
+        <input type="text" name="product_naam" required><br><br>
+
+        <label for="prijs_per_stuk">Prijs per stuk (€):</label>
+        <input type="number" name="prijs_per_stuk" step="0.01" required><br><br>
+
+        <label for="omschrijving">Omschrijving:</label>
+        <textarea name="omschrijving" required></textarea><br><br>
+
+        <button type="submit">Toevoegen</button>
+    </form>
+</body>
+</html>
