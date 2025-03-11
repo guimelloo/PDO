@@ -1,26 +1,18 @@
-<?php 
+<?php
 require_once "db.php";
 
 $sql = "SELECT * FROM producten";
 $stmt = $pdo->query($sql);
 
-echo "<table border='1'>";
-
-echo "<tr>
-        <th>Code</th>
-        <th>Naam</th>
-        <th>Prijs</th>
-        <th>Omschrijving</th>
-      </tr>";
-
+$products = [];
 while ($row = $stmt->fetch()) {
-    echo "<tr>
-            <td>" . htmlspecialchars($row['product_code']) . "</td>
-            <td>" . htmlspecialchars($row['product_naam']) . "</td>
-            <td>" . htmlspecialchars($row['prijs_per_stuk']) . "</td>
-            <td>" . htmlspecialchars($row['omschrijving']) . "</td>
-          </tr>";
+    $products[] = [
+        'code' => htmlspecialchars($row['product_code']),
+        'naam' => htmlspecialchars($row['product_naam']),
+        'prijs' => htmlspecialchars($row['prijs_per_stuk']),
+        'omschrijving' => htmlspecialchars($row['omschrijving'])
+    ];
 }
 
-echo "</table>";
-
+header('Content-Type: application/json');
+echo json_encode($products);
