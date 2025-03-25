@@ -35,7 +35,10 @@ $stmt = $pdo->query($sql);
                         <td><?= htmlspecialchars($row['omschrijving']) ?></td>
                         <td>
                             <a href="showEdit.php?product_code=<?= $row['product_code'] ?>" class="btn btn-primary btn-sm">Editar</a>
-                            <a href="deletar.php?id=<?= $row['product_code'] ?>" class="btn btn-danger btn-sm" onclick="return confirm('Tem certeza que deseja deletar este produto?')">Deletar</a>
+                            <form action="delete.php" method="POST" style="display:inline;">
+                                <input type="hidden" name="product_code" value="<?= $row['product_code'] ?>">
+                                <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Tem certeza que deseja deletar este produto?')">Deletar</button>
+                            </form>
                         </td>
                     </tr>
                 <?php endwhile; ?>

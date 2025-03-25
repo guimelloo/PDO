@@ -13,8 +13,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($stmt->execute([$naam, $prijs, $omschrijving, $id])) {
         header("Location: showSelect.php");
         exit();
+    } else {
+        $errorInfo = $stmt->errorInfo();
+        die("Erro ao atualizar o produto: " . $errorInfo[2]);
     }
 } else {
-    die("Method niet bekend.");
+    die("Método de requisição inválido.");
 }
 ?>
